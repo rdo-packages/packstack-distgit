@@ -4,6 +4,7 @@
 # openstack-packstack ----------------------------------------------------------
 
 Name:           openstack-packstack
+Epoch:          1
 Version:        XXX
 Release:        XXX
 Summary:        Openstack Install Utility
