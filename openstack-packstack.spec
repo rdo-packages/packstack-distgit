@@ -5,6 +5,7 @@
 # openstack-packstack ----------------------------------------------------------
 
 Name:           openstack-packstack
+Epoch:          1
 Version:        10.0.0
 Release:        0.1%{?milestone}%{?dist}
 Summary:        Openstack Install Utility
@@ -28,7 +29,7 @@ BuildRequires:  git
 Requires:       openssh-clients
 Requires:       python-netaddr
 Requires:       python-netifaces
-Requires:       openstack-packstack-puppet == %{version}-%{release}
+Requires:       openstack-packstack-puppet == %{epoch}:%{version}-%{release}
 Obsoletes:      packstack-modules-puppet
 Requires:       python-setuptools
 Requires:       PyYAML
