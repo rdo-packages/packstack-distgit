@@ -1,3 +1,5 @@
-# UUID                                  	Group Name
-#
-3ca05f04491c29f72cb46c4b90b8c991ed43c366	packstack-distgit-ptl
+# UUID          Group Name
+6ddfecad023c6f4fa3ac8c4d2583c502ea675a73 	Non-Interactive Users
+8144c6927d193dfcba821818219f24125cc2edaf       	packstack-distgit-core
+3ca05f04491c29f72cb46c4b90b8c991ed43c366        	packstack-distgit-ptl
+global:Registered-Users		Registered Users
