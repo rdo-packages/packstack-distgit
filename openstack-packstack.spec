@@ -1,27 +1,18 @@
-%define milestone .0rc2
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
-%{!?upstream_version:   %global upstream_version         %{version}%{milestone}}
+%{!?upstream_version:   %global upstream_version         %{version}%{?milestone}}
 
 
 # openstack-packstack ----------------------------------------------------------
 
 Name:           openstack-packstack
 Version:        8.0.0
-Release:        0.8%{milestone}%{?dist}
+Release:        1%{?milestone}%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        http://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
-
-#
-# patches_base=8.0.0.0rc2
-#
-Patch0001: 0001-Fix-gate-Tempest-setup-and-repositories.patch
-Patch0002: 0002-Workaround-for-dev-kvm-permissions-issues.patch
-Patch0003: 0003-Packstack-should-not-specify-release-when-installint.patch
-Patch0004: 0004-Ensure-aodh-and-horizon-templates-do-not-overwrite-p.patch
 
 BuildArch:      noarch
 
@@ -76,11 +67,6 @@ This package contains documentation files for Packstack.
 
 %prep
 %setup -n packstack-%{upstream_version}
-
-%patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
-%patch0004 -p1
 
 # Sanitizing a lot of the files in the puppet modules
 find packstack/puppet/modules \( -name .fixtures.yml -o -name .gemfile -o -name ".travis.yml" -o -name .rspec \) -exec rm {} +
@@ -159,6 +145,9 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 # changelog --------------------------------------------------------------------
 
 %changelog
+* Wed May 11 2016 Alan Pevec <alan.pevec@redhat.com> 8.0.0-1
+- Update to 8.0.0
+
 * Fri Apr 15 2016 Alan Pevec <apevec AT redhat.com> 8.0.0-0.8.0rc2
 - Fix gate: Tempest setup and repositories
 
