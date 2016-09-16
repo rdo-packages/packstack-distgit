@@ -1,21 +1,18 @@
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
-%global git_snaptag 1484
-%global git_commit g9bd9178
-%{!?upstream_version:   %global upstream_version         %{version}.dev%{git_snaptag}.%{git_commit}}
-
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 # openstack-packstack ----------------------------------------------------------
 
 Name:           openstack-packstack
-Version:        2015.1
-Release:        0.1.dev%{git_snaptag}.%{git_commit}%{?dist}
+Version:        XXX
+Release:        XXX
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 # Tarball is created by bin/release.sh
-Source0:        http://mmagr.fedorapeople.org/downloads/packstack/packstack-%{upstream_version}.tar.gz
+Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
 
 BuildArch:      noarch
 
