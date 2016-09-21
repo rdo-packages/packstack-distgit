@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facab960_b7e289d3",
+        "filename": "openstack-packstack.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2016-09-21T18:16:06Z",
+      "side": 1,
+      "message": "Best to add explicit BuildRequires: git\neven if it is implicitly pulled into DLRN buildroot.\n\nAlso need to check if pbr generated version is still correct in docs and why is pbr not taking its cache json file in sdist tarball.",
+      "revId": "1276f2e573ebd99af31aadc0362edf707a1f9cf3",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
