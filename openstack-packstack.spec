@@ -18,6 +18,7 @@ BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
+BuildRequires:  git
 
 Requires:       openssh-clients
 Requires:       python-netaddr
@@ -66,7 +67,7 @@ This package contains documentation files for Packstack.
 # prep -------------------------------------------------------------------------
 
 %prep
-%setup -n packstack-%{upstream_version}
+%autosetup -n packstack-%{upstream_version} -S git
 
 # Sanitizing a lot of the files in the puppet modules
 find packstack/puppet/modules \( -name .fixtures.yml -o -name .gemfile -o -name ".travis.yml" -o -name .rspec \) -exec rm {} +
