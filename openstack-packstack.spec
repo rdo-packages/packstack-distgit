@@ -145,3 +145,4 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 # changelog --------------------------------------------------------------------
 
 %changelog
+# REMOVEME: error caused by commit 
