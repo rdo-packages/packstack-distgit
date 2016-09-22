@@ -29,6 +29,7 @@ Requires:       python-setuptools
 Requires:       PyYAML
 Requires:       python-docutils
 Requires:       pyOpenSSL
+Requires:       python-pbr
 
 %description
 Packstack is a utility that uses Puppet modules to install OpenStack. Packstack
