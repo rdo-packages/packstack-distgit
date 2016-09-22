@@ -11,7 +11,6 @@ Summary:        Openstack Install Utility
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
-# Tarball is created by bin/release.sh
 Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
 
 BuildArch:      noarch
@@ -23,7 +22,7 @@ BuildRequires:  git
 Requires:       openssh-clients
 Requires:       python-netaddr
 Requires:       openstack-packstack-puppet == %{version}-%{release}
-Requires:       openstack-puppet-modules >= 2014.2.10
+Requires:       openstack-puppet-modules >= 1:9.0.0
 Obsoletes:      packstack-modules-puppet
 Requires:       python-setuptools
 Requires:       PyYAML
