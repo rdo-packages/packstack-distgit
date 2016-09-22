@@ -18,6 +18,7 @@ BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
+BuildRequires:  python-pbr
 BuildRequires:  git
 
 Requires:       openssh-clients
