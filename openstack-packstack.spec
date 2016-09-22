@@ -11,7 +11,6 @@ Summary:        Openstack Install Utility
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
-# Tarball is created by bin/release.sh
 Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
 
 BuildArch:      noarch
@@ -24,7 +23,6 @@ BuildRequires:  git
 Requires:       openssh-clients
 Requires:       python-netaddr
 Requires:       openstack-packstack-puppet == %{version}-%{release}
-Requires:       openstack-puppet-modules >= 2014.2.10
 Obsoletes:      packstack-modules-puppet
 Requires:       python-setuptools
 Requires:       PyYAML
@@ -43,6 +41,48 @@ servers over ssh.
 %package puppet
 Summary:        Packstack Puppet module
 Group:          Development/Libraries
+
+# generated from packstack/Puppetfile:
+# awk -F\' '/^mod / {print "Requires: puppet-" $2}' Puppetfile
+
+Requires: puppet-aodh
+Requires: puppet-ceilometer
+Requires: puppet-cinder
+Requires: puppet-glance
+Requires: puppet-gnocchi
+Requires: puppet-heat
+Requires: puppet-horizon
+Requires: puppet-ironic
+Requires: puppet-keystone
+Requires: puppet-manila
+Requires: puppet-neutron
+Requires: puppet-nova
+Requires: puppet-openstack_extras
+Requires: puppet-openstacklib
+Requires: puppet-oslo
+Requires: puppet-sahara
+Requires: puppet-swift
+Requires: puppet-tempest
+Requires: puppet-trove
+Requires: puppet-vswitch
+Requires: puppet-apache
+Requires: puppet-certmonger
+Requires: puppet-concat
+Requires: puppet-firewall
+Requires: puppet-inifile
+Requires: puppet-memcached
+Requires: puppet-mongodb
+Requires: puppet-mysql
+Requires: puppet-nssdb
+Requires: puppet-rabbitmq
+Requires: puppet-redis
+Requires: puppet-remote
+Requires: puppet-rsync
+Requires: puppet-ssh
+Requires: puppet-stdlib
+Requires: puppet-sysctl
+Requires: puppet-vcsrepo
+Requires: puppet-xinetd
 
 %description puppet
 Puppet module used by Packstack to install OpenStack
