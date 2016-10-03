@@ -5,7 +5,7 @@
 # openstack-packstack ----------------------------------------------------------
 
 Name:           openstack-packstack
-Version:        8.0.1
+Version:        8.0.2
 Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
@@ -145,6 +145,9 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 # changelog --------------------------------------------------------------------
 
 %changelog
+* Mon Oct 03 2016 Alan Pevec <alan.pevec@redhat.com> 8.0.2-1
+- Update to 8.0.2
+
 * Sat Oct 01 2016 Alan Pevec <alan.pevec@redhat.com> 8.0.1-1
 - Update to 8.0.1
 
