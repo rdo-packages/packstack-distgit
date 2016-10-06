@@ -1,4 +1,4 @@
-%global milestone .0rc2
+%global milestone .0rc3
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -6,7 +6,7 @@
 
 Name:           openstack-packstack
 Version:        9.0.0
-Release:        0.2%{?milestone}%{?dist}
+Release:        0.3%{?milestone}%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
@@ -15,7 +15,7 @@ URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
 
 #
-# patches_base=9.0.0.0rc2
+# patches_base=9.0.0.0rc3
 #
 
 BuildArch:      noarch
@@ -193,6 +193,9 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 # changelog --------------------------------------------------------------------
 
 %changelog
+* Fri Oct 07 2016 Alan Pevec <alan.pevec@redhat.com> 9.0.0-0.3.0rc3
+- Update to 9.0.0.0rc3
+
 * Mon Oct 03 2016 Alan Pevec <alan.pevec@redhat.com> 9.0.0-0.2.0rc2
 - Update to 9.0.0.0rc2
 
