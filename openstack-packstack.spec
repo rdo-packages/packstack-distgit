@@ -54,6 +54,7 @@ Requires: puppet-heat
 Requires: puppet-horizon
 Requires: puppet-ironic
 Requires: puppet-keystone
+Requires: puppet-magnum
 Requires: puppet-manila
 Requires: puppet-neutron
 Requires: puppet-nova
