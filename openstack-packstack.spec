@@ -61,6 +61,7 @@ Requires: puppet-nova
 Requires: puppet-openstack_extras
 Requires: puppet-openstacklib
 Requires: puppet-oslo
+Requires: puppet-panko
 Requires: puppet-sahara
 Requires: puppet-swift
 Requires: puppet-tempest
