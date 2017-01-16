@@ -22,6 +22,7 @@ BuildRequires:  git
 
 Requires:       openssh-clients
 Requires:       python-netaddr
+Requires:       python-netifaces
 Requires:       openstack-packstack-puppet == %{version}-%{release}
 Obsoletes:      packstack-modules-puppet
 Requires:       python-setuptools
