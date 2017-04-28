@@ -5,7 +5,7 @@
 
 Name:           openstack-packstack
 Epoch:          1
-Version:        10.0.0
+Version:        10.0.1
 Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
@@ -192,6 +192,9 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 # changelog --------------------------------------------------------------------
 
 %changelog
+* Fri Apr 28 2017 Alfredo Moralejo <amoralej@redhat.com> 1:10.0.1-1
+- Update to 10.0.1
+
 * Fri Mar 10 2017 Javier Peña <jpena@redhat.com> 1:10.0.0-1
 - Update to 10.0.0
 
