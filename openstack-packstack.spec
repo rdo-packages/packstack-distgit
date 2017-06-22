@@ -134,6 +134,7 @@ mv packstack/puppet %{_builddir}/puppet
 
 %if 0%{?with_doc}
 cd docs
+export PYTHONPATH=..
 %if 0%{?rhel} == 6
 make man SPHINXBUILD=sphinx-1.0-build
 %else
