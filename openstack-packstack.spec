@@ -98,19 +98,16 @@ Puppet module used by Packstack to install OpenStack
 %package doc
 Summary:          Documentation for Packstack
 Group:            Documentation
-
-%if 0%{?rhel} == 6
-BuildRequires:  python-sphinx10
-%else
-BuildRequires:  python-sphinx
-%endif
+BuildRequires:    python-sphinx
+BuildRequires:    python-netaddr
+BuildRequires:    python-netifaces
+BuildRequires:    PyYAML
+BuildRequires:    pyOpenSSL
 
 %description doc
 This package contains documentation files for Packstack.
 %endif
 
-
-# prep -------------------------------------------------------------------------
 
 %prep
 %autosetup -n packstack-%{upstream_version} -S git
@@ -126,26 +123,15 @@ find packstack/puppet/modules \( -name spec -o -name ext \) | xargs rm -rf
 rm -rf %{_builddir}/puppet
 mv packstack/puppet %{_builddir}/puppet
 
-
-# build ------------------------------------------------------------------------
-
 %build
-%{__python} setup.py build
+%py2_build
 
 %if 0%{?with_doc}
-cd docs
-%if 0%{?rhel} == 6
-make man SPHINXBUILD=sphinx-1.0-build
-%else
-make man
+%{__python2} setup.py build_sphinx -b man
 %endif
-%endif
-
-
-# install ----------------------------------------------------------------------
 
 %install
-%{__python} setup.py install --skip-build --root %{buildroot}
+%py2_install
 
 # Delete tests
 rm -fr %{buildroot}%{python_sitelib}/tests
@@ -164,13 +150,11 @@ mv %{_builddir}/puppet/templates %{buildroot}/%{python_sitelib}/packstack/puppet
 
 %if 0%{?with_doc}
 mkdir -p %{buildroot}%{_mandir}/man1
-install -p -D -m 644 docs/_build/man/*.1 %{buildroot}%{_mandir}/man1/
+install -p -D -m 644 docs/build/man/*.1 %{buildroot}%{_mandir}/man1/
 %endif
 
 # Remove docs directory
 rm -fr %{buildroot}%{python_sitelib}/docs
-
-# files ------------------------------------------------------------------------
 
 %files
 %doc LICENSE
@@ -187,8 +171,5 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 %files doc
 %{_mandir}/man1/packstack.1.gz
 %endif
-
-
-# changelog --------------------------------------------------------------------
 
 %changelog
