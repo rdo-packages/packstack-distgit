@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a890539_7003a50f",
+        "filename": "openstack-packstack.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2017-08-29T08:57:54Z",
+      "side": 1,
+      "message": "I don\u0027t see this used in the current packstack source code, maybe it\u0027s requirements.txt out of date?",
+      "revId": "21e74a62a2cd4ff2c2f85654cd3fcf57cb5203f2",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
