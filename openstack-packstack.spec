@@ -26,11 +26,11 @@ Requires:       python-netaddr
 Requires:       python-netifaces
 Requires:       openstack-packstack-puppet == %{epoch}:%{version}-%{release}
 Obsoletes:      packstack-modules-puppet
-Requires:       python-setuptools
 Requires:       PyYAML
 Requires:       python-docutils
-Requires:       pyOpenSSL
+Requires:       pyOpenSSL >= 16.2.0
 Requires:       python-pbr
+Requires:       python-cryptography
 
 %description
 Packstack is a utility that uses Puppet modules to install OpenStack. Packstack
