@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a890539_6eaae21a",
+        "filename": "openstack-packstack.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2017-08-30T08:50:20Z",
+      "side": 0,
+      "message": "Looks like this is still required:\nhttp://eavesdrop.openstack.org/irclogs/%23rdo/latest.log.html#t2017-08-30T03:49:16",
+      "revId": "66fe9a2402fe4ea1df8159e539b6eb9a76b48de1",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
