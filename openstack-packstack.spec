@@ -7,7 +7,7 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        11.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        0.2%{?milestone}%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
@@ -179,6 +179,9 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 %endif
 
 %changelog
+* Wed Aug 30 2017 Javier Peña <jpena@redhat.com> 1:11.0.0-0.2.0rc1
+- Updated requirements
+
 * Mon Aug 28 2017 Alan Pevec <alan.pevec@redhat.com> 1:11.0.0-0.1.0rc1
 - Update to 11.0.0.0rc1
 
