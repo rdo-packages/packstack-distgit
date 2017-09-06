@@ -1,6 +1,9 @@
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
+# Guard for rhosp for packages not supported in OSP
+%global rhosp 0
+
 # openstack-packstack ----------------------------------------------------------
 
 Name:           openstack-packstack
@@ -56,7 +59,6 @@ Requires: puppet-heat
 Requires: puppet-horizon
 Requires: puppet-ironic
 Requires: puppet-keystone
-Requires: puppet-magnum
 Requires: puppet-manila
 Requires: puppet-neutron
 Requires: puppet-nova
@@ -88,6 +90,10 @@ Requires: puppet-stdlib
 Requires: puppet-sysctl
 Requires: puppet-vcsrepo
 Requires: puppet-xinetd
+
+%if 0%{rhosp} == 0
+Requires: puppet-magnum
+%endif
 
 %description puppet
 Puppet module used by Packstack to install OpenStack
