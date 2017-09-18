@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a961159_f3f17f96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 85
+      },
+      "writtenOn": "2017-09-18T18:35:51Z",
+      "side": 1,
+      "message": "you could actually do\nUpstream-Id: \u003cchangeid of upstream 504146\u003e",
+      "revId": "c1136258f555b5d643a51c5e6ce316601f604cbb",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
