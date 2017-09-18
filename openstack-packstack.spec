@@ -83,7 +83,6 @@ Requires: puppet-concat
 Requires: puppet-firewall
 Requires: puppet-inifile
 Requires: puppet-memcached
-Requires: puppet-mongodb
 Requires: puppet-mysql
 Requires: puppet-nssdb
 Requires: puppet-rabbitmq
