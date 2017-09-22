@@ -16,6 +16,24 @@
       "revId": "c1136258f555b5d643a51c5e6ce316601f604cbb",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a961159_332b07ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 127
+      },
+      "writtenOn": "2017-09-22T17:19:13Z",
+      "side": 1,
+      "message": "good to know there is a way to go across gerrit systems.\n\nAs soon as r.o.o is back up I\u0027ll update this review with that change id",
+      "parentUuid": "3a961159_f3f17f96",
+      "revId": "c1136258f555b5d643a51c5e6ce316601f604cbb",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
