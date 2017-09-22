@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a930d6b_2b947936",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-09-22T17:26:23Z",
+      "side": 1,
+      "message": "nitpick, this has been merged in queens, not pike, although a cherry-pick has been proposed. This review in rpm-master is for builds in master, not pike.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "c1136258f555b5d643a51c5e6ce316601f604cbb",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a961159_f3f17f96",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
