@@ -16,6 +16,7 @@ Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
+Patch0:         0001-Define-key_manager-api_class-to-a-cass-full-path.patch
 
 BuildArch:      noarch
 
