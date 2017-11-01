@@ -1,4 +1,3 @@
-%global milestone .0rc1
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -10,7 +9,7 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        11.0.0
-Release:        0.2%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
@@ -18,8 +17,6 @@ License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
 
-#
-# patches_base=11.0.0.0rc1
 #
 
 BuildArch:      noarch
@@ -184,6 +181,9 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 %endif
 
 %changelog
+* Wed Nov 01 2017 Alan Pevec <alan.pevec@redhat.com> 1:11.0.0-1
+- Update to 11.0.0
+
 * Wed Aug 30 2017 Javier Peña <jpena@redhat.com> 1:11.0.0-0.2.0rc1
 - Updated requirements
 
