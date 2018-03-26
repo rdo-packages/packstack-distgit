@@ -1,4 +1,3 @@
-%global milestone .0rc2
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -10,7 +9,7 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        12.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
@@ -18,8 +17,6 @@ License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
 
-#
-# patches_base=12.0.0.0rc2
 #
 
 BuildArch:      noarch
@@ -183,6 +180,9 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 %endif
 
 %changelog
+* Mon Mar 26 2018 Alan Pevec <apevec AT redhat.com> 1:12.0.0-1
+- Update to 12.0.0
+
 * Tue Feb 20 2018 RDO <dev@lists.rdoproject.org> 1:12.0.0-0.1.0rc2
 - Update to 12.0.0.0rc2
 
