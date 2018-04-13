@@ -9,7 +9,7 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        12.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
@@ -35,6 +35,7 @@ Requires:       PyYAML
 Requires:       python-docutils
 Requires:       pyOpenSSL >= 16.2.0
 Requires:       python-pbr
+Requires:       python-setuptools
 
 %description
 Packstack is a utility that uses Puppet modules to install OpenStack. Packstack
@@ -180,6 +181,9 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 %endif
 
 %changelog
+* Sat Apr 14 2018 Alfredo Moralejo <amoralej@redhat.com> 1:12.0.0-2
+- Added python-setuptools as requirement.
+
 * Mon Mar 26 2018 Alan Pevec <apevec AT redhat.com> 1:12.0.0-1
 - Update to 12.0.0
 
