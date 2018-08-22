@@ -1,3 +1,4 @@
+%global milestone .0rc1
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -8,14 +9,18 @@
 
 Name:           openstack-packstack
 Epoch:          1
-Version:        XXX
-Release:        XXX
+Version:        13.0.0
+Release:        0.1%{?milestone}%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
+
+#
+# patches_base=13.0.0.0rc1
+#
 
 BuildArch:      noarch
 
@@ -179,3 +184,6 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 %endif
 
 %changelog
+* Wed Aug 22 2018 RDO <dev@lists.rdoproject.org> 1:13.0.0-0.1.0rc1
+- Update to 13.0.0.0rc1
+
