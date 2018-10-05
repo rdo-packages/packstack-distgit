@@ -42,6 +42,7 @@ Obsoletes:      packstack-modules-puppet
 Requires:       python%{pyver}-pyOpenSSL >= 16.2.0
 Requires:       python%{pyver}-pbr
 Requires:       python%{pyver}-setuptools
+Requires:       /usr/bin/yum
 
 # Handle python2 exception
 %if %{pyver} == 2
