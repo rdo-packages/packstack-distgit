@@ -45,7 +45,7 @@ Requires:       python%{pyver}-setuptools
 Requires:       /usr/bin/yum
 
 # Handle python2 exception
-%if %{pyver} == 2
+%if 0%{?pyver} == 2
 Requires:       python-netifaces
 Requires:       PyYAML
 Requires:       python-docutils
@@ -129,7 +129,7 @@ BuildRequires:    python%{pyver}-netaddr
 BuildRequires:    python%{pyver}-pyOpenSSL
 
 # Handle python2 exception
-%if %{pyver} == 2
+%if 0%{?pyver} == 2
 BuildRequires:    python-netifaces
 BuildRequires:    PyYAML
 %else
