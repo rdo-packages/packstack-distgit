@@ -1,3 +1,4 @@
+%global milestone .0rc1
 # Macros for py2/py3 compatibility
 %if 0%{?fedora} || 0%{?rhel} > 7
 %global pyver %{python3_pkgversion}
@@ -19,14 +20,18 @@
 
 Name:           openstack-packstack
 Epoch:          1
-Version:        XXX
-Release:        XXX
+Version:        14.0.0
+Release:        0.1%{?milestone}%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
+
+#
+# patches_base=14.0.0.0rc1
+#
 
 BuildArch:      noarch
 
@@ -206,3 +211,6 @@ rm -fr %{buildroot}%{pyver_sitelib}/docs
 %endif
 
 %changelog
+* Wed Mar 27 2019 RDO <dev@lists.rdoproject.org> 1:14.0.0-0.1.0rc1
+- Update to 14.0.0.0rc1
+
