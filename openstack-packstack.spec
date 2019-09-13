@@ -8,8 +8,8 @@
 
 Name:           openstack-packstack
 Epoch:          1
-Version:        12.0.0
-Release:        2%{?dist}
+Version:        12.0.1
+Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
@@ -181,6 +181,9 @@ rm -fr %{buildroot}%{python_sitelib}/docs
 %endif
 
 %changelog
+* Fri Sep 13 2019 RDO <dev@lists.rdoproject.org> 1:12.0.1-1
+- Update to 12.0.1
+
 * Sat Apr 14 2018 Alfredo Moralejo <amoralej@redhat.com> 1:12.0.0-2
 - Added python-setuptools as requirement.
 
