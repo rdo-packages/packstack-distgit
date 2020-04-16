@@ -1,4 +1,3 @@
-%global milestone .0rc1
 # Macros for py2/py3 compatibility
 %if 0%{?fedora} || 0%{?rhel} > 7
 %global pyver %{python3_pkgversion}
@@ -20,17 +19,15 @@
 
 Name:           openstack-packstack
 Epoch:          1
-Version:        15.0.0
-Release:        0.1%{?milestone}%{?dist}
+Version:        15.0.1
+Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
-Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
+Source0:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_version}.tar.gz
 
-#
-# patches_base=15.0.0.0rc1
 #
 
 BuildArch:      noarch
@@ -212,6 +209,9 @@ rm -fr %{buildroot}%{pyver_sitelib}/docs
 %endif
 
 %changelog
+* Thu Apr 16 2020 Alfredo Moralejo <amoralej@redhat.com> 1:15.0.1-1
+- Update to 15.0.1
+
 * Fri Oct 04 2019 RDO <dev@lists.rdoproject.org> 1:15.0.0-0.1.0rc1
 - Update to 15.0.0.0rc1
 
