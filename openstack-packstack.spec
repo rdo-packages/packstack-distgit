@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -30,30 +19,23 @@ Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_ve
 
 BuildArch:      noarch
 
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-setuptools
-BuildRequires:  python%{pyver}-pbr
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-pbr
 BuildRequires:  git
 
 Requires:       openssh-clients
-Requires:       python%{pyver}-netaddr
+Requires:       python3-netaddr
 Requires:       openstack-packstack-puppet == %{epoch}:%{version}-%{release}
 Obsoletes:      packstack-modules-puppet
-Requires:       python%{pyver}-pyOpenSSL >= 16.2.0
-Requires:       python%{pyver}-pbr
-Requires:       python%{pyver}-setuptools
+Requires:       python3-pyOpenSSL >= 16.2.0
+Requires:       python3-pbr
+Requires:       python3-setuptools
 Requires:       /usr/bin/yum
 
-# Handle python2 exception
-%if 0%{?pyver} == 2
-Requires:       python-netifaces
-Requires:       PyYAML
-Requires:       python-docutils
-%else
-Requires:       python%{pyver}-netifaces
-Requires:       python%{pyver}-PyYAML
-Requires:       python%{pyver}-docutils
-%endif
+Requires:       python3-netifaces
+Requires:       python3-PyYAML
+Requires:       python3-docutils
 
 %description
 Packstack is a utility that uses Puppet modules to install OpenStack. Packstack
@@ -125,18 +107,12 @@ Puppet module used by Packstack to install OpenStack
 %package doc
 Summary:          Documentation for Packstack
 Group:            Documentation
-BuildRequires:    python%{pyver}-sphinx
-BuildRequires:    python%{pyver}-netaddr
-BuildRequires:    python%{pyver}-pyOpenSSL
+BuildRequires:    python3-sphinx
+BuildRequires:    python3-netaddr
+BuildRequires:    python3-pyOpenSSL
 
-# Handle python2 exception
-%if 0%{?pyver} == 2
-BuildRequires:    python-netifaces
-BuildRequires:    PyYAML
-%else
-BuildRequires:    python%{pyver}-netifaces
-BuildRequires:    python%{pyver}-PyYAML
-%endif
+BuildRequires:    python3-netifaces
+BuildRequires:    python3-PyYAML
 
 %description doc
 This package contains documentation files for Packstack.
@@ -158,17 +134,17 @@ rm -rf %{_builddir}/puppet
 mv packstack/puppet %{_builddir}/puppet
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %if 0%{?with_doc}
-%{pyver_bin} setup.py build_sphinx -b man
+%{__python3} setup.py build_sphinx -b man
 %endif
 
 %install
-%{pyver_install}
+%{py3_install}
 
 # Delete tests
-rm -fr %{buildroot}%{pyver_sitelib}/tests
+rm -fr %{buildroot}%{python3_sitelib}/tests
 
 # Install Puppet module
 mkdir -p %{buildroot}/%{_datadir}/openstack-puppet/modules
@@ -179,8 +155,8 @@ mkdir -p %{buildroot}/%{_datadir}/packstack
 install -p -D -m 644 docs/packstack.rst %{buildroot}/%{_datadir}/packstack
 
 # Move Puppet manifest templates back to original place
-mkdir -p %{buildroot}/%{pyver_sitelib}/packstack/puppet
-mv %{_builddir}/puppet/templates %{buildroot}/%{pyver_sitelib}/packstack/puppet/
+mkdir -p %{buildroot}/%{python3_sitelib}/packstack/puppet
+mv %{_builddir}/puppet/templates %{buildroot}/%{python3_sitelib}/packstack/puppet/
 
 %if 0%{?with_doc}
 mkdir -p %{buildroot}%{_mandir}/man1
@@ -188,14 +164,14 @@ install -p -D -m 644 docs/build/man/*.1 %{buildroot}%{_mandir}/man1/
 %endif
 
 # Remove docs directory
-rm -fr %{buildroot}%{pyver_sitelib}/docs
+rm -fr %{buildroot}%{python3_sitelib}/docs
 
 %files
 %doc LICENSE
 %{_bindir}/packstack
 %{_datadir}/packstack
-%{pyver_sitelib}/packstack
-%{pyver_sitelib}/packstack-*.egg-info
+%{python3_sitelib}/packstack
+%{python3_sitelib}/packstack-*.egg-info
 
 %files puppet
 %defattr(644,root,root,755)
