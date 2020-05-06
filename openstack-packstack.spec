@@ -15,7 +15,7 @@ Summary:        Openstack Install Utility
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
-Source0:        https://tarballs.openstack.org/packstack/packstack-%{upstream_version}.tar.gz
+Source0:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_version}.tar.gz
 
 BuildArch:      noarch
 
