@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f005b19_de6c95ea",
+        "filename": "openstack-packstack.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2020-05-06T08:36:03Z",
+      "side": 1,
+      "message": "Now it\u0027s https://tarballs.opendev.org/x/packstack/",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 56
+      },
+      "revId": "66764ade8af821bc6e9e832851da32957eb1aa72",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
