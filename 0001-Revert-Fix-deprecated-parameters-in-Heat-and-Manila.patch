@@ -1,0 +1,91 @@
+From 9bdfce3fc7ba426f89a1df70c9a4d509fe1d49d3 Mon Sep 17 00:00:00 2001
+From: yatinkarel <ykarel@redhat.com>
+Date: Fri, 8 May 2020 09:27:07 +0530
+Subject: [PATCH] Revert "Fix deprecated parameters in Heat and Manila"
+
+The mentioned commits of puppet-heat and puppet-manila
+are not in stable/ussuri so the patch is not needed in
+ussuri.
+
+This reverts commit 4f58975d6c396ae7eb0b0764a971e54404d7de79.
+
+Change-Id: I3ed67f13341ca080fa56bf8d51d0aa414e50a6d6
+---
+ .../puppet/modules/packstack/manifests/heat.pp |  1 +
+ .../manifests/manila/backend/generic.pp        | 18 ++++++++++++------
+ .../packstack/manifests/manila/network.pp      |  5 ++---
+ 3 files changed, 15 insertions(+), 9 deletions(-)
+
+diff --git a/packstack/puppet/modules/packstack/manifests/heat.pp b/packstack/puppet/modules/packstack/manifests/heat.pp
+index c48a2b16..4414118f 100644
+--- a/packstack/puppet/modules/packstack/manifests/heat.pp
++++ b/packstack/puppet/modules/packstack/manifests/heat.pp
+@@ -12,6 +12,7 @@ class packstack::heat ()
+     class { '::heat::engine':
+       heat_metadata_server_url      => "http://${heat_cfg_ctrl_host}:8000",
+       heat_waitcondition_server_url => "http://${heat_cfg_ctrl_host}:8000/v1/waitcondition",
++      heat_watch_server_url         => "http://${heat_cfg_ctrl_host}:8003",
+       auth_encryption_key           => hiera('CONFIG_HEAT_AUTH_ENC_KEY'),
+       num_engine_workers            => hiera('CONFIG_SERVICE_WORKERS'),
+     }
+diff --git a/packstack/puppet/modules/packstack/manifests/manila/backend/generic.pp b/packstack/puppet/modules/packstack/manifests/manila/backend/generic.pp
+index 31dff2b5..7535b5a9 100644
+--- a/packstack/puppet/modules/packstack/manifests/manila/backend/generic.pp
++++ b/packstack/puppet/modules/packstack/manifests/manila/backend/generic.pp
+@@ -10,6 +10,13 @@ class packstack::manila::backend::generic ()
+ 
+     packstack::manila::network{ 'generic': }
+ 
++    if ($::manila_network_type == 'neutron'){
++      $service_instance_network_helper_type = 'neutron'
++    }
++    elsif ($::manila_network_type == 'nova-network'){
++      $service_instance_network_helper_type = 'nova'
++    }
++
+     $admin_username = hiera('CONFIG_KEYSTONE_ADMIN_USERNAME')
+     $admin_password = hiera('CONFIG_KEYSTONE_ADMIN_PW')
+     $admin_tenant   = 'admin'
+@@ -27,18 +34,17 @@ class packstack::manila::backend::generic ()
+       service_image_location               => hiera('CONFIG_MANILA_SERVICE_IMAGE_LOCATION'),
+       service_instance_user                => hiera('CONFIG_MANILA_SERVICE_INSTANCE_USER'),
+       service_instance_password            => hiera('CONFIG_MANILA_SERVICE_INSTANCE_PASSWORD'),
++      service_instance_network_helper_type => $service_instance_network_helper_type,
+       service_instance_flavor_id           => 66,
+     }
+ 
+     class { '::manila::compute::nova':
+-      auth_type => 'password',
+-      auth_url  => hiera('CONFIG_KEYSTONE_PUBLIC_URL_VERSIONLESS'),
+-      password  => hiera('CONFIG_NOVA_KS_PW'),
++      nova_admin_password    => hiera('CONFIG_NOVA_KS_PW'),
++      nova_admin_tenant_name => 'services',
+     }
+ 
+     class { '::manila::volume::cinder':
+-      auth_type => 'password',
+-      auth_url  => hiera('CONFIG_KEYSTONE_PUBLIC_URL_VERSIONLESS'),
+-      password    => hiera('CONFIG_CINDER_KS_PW'),
++      cinder_admin_password    => hiera('CONFIG_CINDER_KS_PW'),
++      cinder_admin_tenant_name => 'services',
+     }
+ }
+diff --git a/packstack/puppet/modules/packstack/manifests/manila/network.pp b/packstack/puppet/modules/packstack/manifests/manila/network.pp
+index aef418fd..3d9e1f2d 100644
+--- a/packstack/puppet/modules/packstack/manifests/manila/network.pp
++++ b/packstack/puppet/modules/packstack/manifests/manila/network.pp
+@@ -4,9 +4,8 @@ define packstack::manila::network ($backend_name = $name) {
+ 
+   if ($manila_network_type == 'neutron'){
+     class { '::manila::network::neutron':
+-      auth_type => 'password',
+-      auth_url  => hiera('CONFIG_KEYSTONE_PUBLIC_URL_VERSIONLESS'),
+-      password  => hiera('CONFIG_NEUTRON_KS_PW'),
++      neutron_admin_password     => hiera('CONFIG_NEUTRON_KS_PW'),
++      neutron_admin_tenant_name  => 'services',
+     }
+   }
+   elsif ($manila_network_type == 'nova-network'){
+-- 
+2.20.1
+
