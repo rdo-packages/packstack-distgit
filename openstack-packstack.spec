@@ -196,3 +196,4 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 * Tue May 05 2020 RDO <dev@lists.rdoproject.org> 1:16.0.0-0.1.0rc1
 - Update to 16.0.0.0rc1
 
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/packstack/commit/?id=4cebf5b2830b8d16595be9066b59a5fbf0fce4ac
