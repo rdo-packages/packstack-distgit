@@ -17,8 +17,6 @@ Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_version}.tar.gz
-# FIXME(ykarel) remove once https://review.opendev.org/726279 is in next packstack release
-Patch0001:      0001-Revert-Fix-deprecated-parameters-in-Heat-and-Manila.patch
 
 #
 # patches_base=16.0.0.0rc1
