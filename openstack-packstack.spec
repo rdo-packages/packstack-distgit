@@ -35,7 +35,7 @@ BuildRequires:  openstack-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr
-BuildRequires:  git
+BuildRequires:  git-core
 
 Requires:       openssh-clients
 Requires:       python3-netaddr
