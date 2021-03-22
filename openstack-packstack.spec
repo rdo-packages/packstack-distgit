@@ -3,7 +3,7 @@
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
-# Guard for rhosp for packages not supported in OSP
+# DNM Guard for rhosp for packages not supported in OSP
 %global rhosp 0
 
 # openstack-packstack ----------------------------------------------------------
