@@ -12,7 +12,7 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        17.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        0.3%{?milestone}%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
@@ -25,6 +25,9 @@ Source101:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_
 Source102:        https://releases.openstack.org/_static/%{sources_gpg_sign}.txt
 %endif
 
+%if ! 0%{?dlrn}
+Patch0001: 0001-Add-config-option-to-skip-tempest-tests.patch
+%endif
 #
 # patches_base=17.0.0.0rc2
 #
@@ -205,6 +208,12 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %endif
 
 %changelog
+* Mon Mar 29 2021 Yatin Karel <ykarel@redhat.com> - 1:17.0.0-0.3.0rc2
+- Actually apply Add-config-option-to-skip-tempest-tests.patch
+
+* Mon Mar 29 2021 Yatin Karel <ykarel@redhat.com> - 1:17.0.0-0.2.0rc2
+- Apply Add-config-option-to-skip-tempest-tests.patch
+
 * Fri Oct 02 2020 RDO <dev@lists.rdoproject.org> 1:17.0.0-0.1.0rc2
 - Update to 17.0.0.0rc2
 
