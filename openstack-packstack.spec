@@ -9,13 +9,17 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        16.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_version}.tar.gz
+
+%if ! 0%{?dlrn}
+Patch0001: 0001-Add-config-option-to-skip-tempest-tests.patch
+%endif
 
 #
 
@@ -185,6 +189,9 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %endif
 
 %changelog
+* Mon Mar 29 2021 Yatin Karel <ykarel@redhat.com> - 16.0.2-2
+- Apply Add-config-option-to-skip-tempest-tests.patch
+
 * Wed Sep 02 2020 RDO <dev@lists.rdoproject.org> 1:16.0.2-1
 - Update to 16.0.2
 
