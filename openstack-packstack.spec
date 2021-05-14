@@ -20,13 +20,17 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        15.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_version}.tar.gz
+
+%if ! 0%{?dlrn}
+Patch0001: 0001-Add-config-option-to-skip-tempest-tests.patch
+%endif
 
 #
 
@@ -209,6 +213,9 @@ rm -fr %{buildroot}%{pyver_sitelib}/docs
 %endif
 
 %changelog
+* Fri May 14 2021 Yatin Karel <ykarel@redhat.com> - 1:15.0.1-2
+- Apply Add-config-option-to-skip-tempest-tests.patch
+
 * Thu Apr 16 2020 Alfredo Moralejo <amoralej@redhat.com> 1:15.0.1-1
 - Update to 15.0.1
 
