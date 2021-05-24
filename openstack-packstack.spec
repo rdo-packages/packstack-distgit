@@ -38,6 +38,7 @@ BuildRequires:  python3-pbr
 BuildRequires:  git-core
 
 Requires:       openssh-clients
+Requires:       python3-distro
 Requires:       python3-netaddr
 Requires:       openstack-packstack-puppet == %{epoch}:%{version}-%{release}
 Obsoletes:      packstack-modules-puppet
