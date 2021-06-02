@@ -82,7 +82,6 @@ Requires: puppet-openstack_extras
 Requires: puppet-openstacklib
 Requires: puppet-oslo
 Requires: puppet-ovn
-Requires: puppet-panko
 Requires: puppet-placement
 Requires: puppet-sahara
 Requires: puppet-swift
