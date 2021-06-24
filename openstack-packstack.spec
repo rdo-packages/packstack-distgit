@@ -20,7 +20,7 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        15.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
@@ -30,6 +30,7 @@ Source0:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_ve
 
 %if ! 0%{?dlrn}
 Patch0001: 0001-Add-config-option-to-skip-tempest-tests.patch
+Patch0002: 0001-Move-pci-class-invocation-to-before-nova-compute.patch
 %endif
 
 #
@@ -213,6 +214,9 @@ rm -fr %{buildroot}%{pyver_sitelib}/docs
 %endif
 
 %changelog
+* Thu Jun 24 2021 Yatin Karel <ykarel@redhat.com> - 1:15.0.1-3
+- Apply 0001-Move-pci-class-invocation-to-before-nova-compute.patch
+
 * Fri May 14 2021 Yatin Karel <ykarel@redhat.com> - 1:15.0.1-2
 - Apply Add-config-option-to-skip-tempest-tests.patch
 

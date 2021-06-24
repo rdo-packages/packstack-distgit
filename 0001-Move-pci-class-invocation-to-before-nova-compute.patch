@@ -1,0 +1,51 @@
+From 4e9ed37b25e833df95e7bd060f04b75897513065 Mon Sep 17 00:00:00 2001
+From: yatinkarel <ykarel@redhat.com>
+Date: Fri, 11 Dec 2020 21:40:43 +0530
+Subject: [PATCH] Move pci class invocation to before nova::compute
+
+[1] handled it for nova::pci, issue with nova::compute::pci appeared
+post [2], this patch is moving nova:compute:pci class invocation to
+before nova::compute in order to handle the duplicate declaration.
+
+[1] https://review.opendev.org/c/x/packstack/+/762100
+[2] https://review.opendev.org/q/I5b3d9dbbd41d060134444609458b3e8bba606ae6
+
+Also make multinode c7 job non voting to unblock c8 puppet
+promotion, c7 phase 1 based promotion is too old so making
+it non voting until it's cleared.
+
+Change-Id: I618aa1fb568a296558bd8a888bb9ae201c24ea76
+(cherry picked from commit 5a6874c0ec103ee580c2f8bfb7b35c1f6fd7d99f)
+---
+ .../puppet/modules/packstack/manifests/nova/compute.pp    | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/packstack/puppet/modules/packstack/manifests/nova/compute.pp b/packstack/puppet/modules/packstack/manifests/nova/compute.pp
+index 0ffd4220..532e3219 100644
+--- a/packstack/puppet/modules/packstack/manifests/nova/compute.pp
++++ b/packstack/puppet/modules/packstack/manifests/nova/compute.pp
+@@ -73,6 +73,10 @@ class packstack::nova::compute ()
+       $instance_usage_audit_period = 'month'
+     }
+ 
++    class { '::nova::compute::pci':
++      passthrough => hiera('CONFIG_NOVA_PCI_PASSTHROUGH_WHITELIST')
++    }
++
+     class { '::nova::compute':
+       enabled                       => true,
+       vncproxy_host                 => hiera('CONFIG_KEYSTONE_HOST_URL'),
+@@ -90,10 +94,6 @@ class packstack::nova::compute ()
+       region_name => hiera('CONFIG_KEYSTONE_REGION'),
+     }
+ 
+-    class { '::nova::compute::pci':
+-      passthrough => hiera('CONFIG_NOVA_PCI_PASSTHROUGH_WHITELIST')
+-    }
+-
+     include ::nova::cell_v2::discover_hosts
+ 
+     Class['nova::compute'] ~> Class['nova::cell_v2::discover_hosts']
+-- 
+2.20.1
+
