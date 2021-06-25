@@ -1,4 +1,3 @@
-%global milestone .0rc1
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0x5d2d1e4fb8d38e6af76c50d53d4fec30cf5ce3da
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
@@ -12,15 +11,13 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        18.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_version}.tar.gz
-#
-# patches_base=18.0.0.0rc1
 #
 
 # Required for tarball sources verification
@@ -205,6 +202,9 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %endif
 
 %changelog
+* Fri Jun 25 2021 Alfredo Moralejo <amoralej@redhat.com> 1:18.0.0-1
+- Update to 18.0.0
+
 * Mon Apr 05 2021 RDO <dev@lists.rdoproject.org> 1:18.0.0-0.1.0rc1
 - Update to 18.0.0.0rc1
 
