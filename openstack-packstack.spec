@@ -19,8 +19,8 @@
 
 Name:           openstack-packstack
 Epoch:          1
-Version:        15.0.1
-Release:        2%{?dist}
+Version:        15.1.0
+Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
@@ -213,6 +213,9 @@ rm -fr %{buildroot}%{pyver_sitelib}/docs
 %endif
 
 %changelog
+* Fri Jun 25 2021 Alfredo Moralejo <amoralej@redhat.com> 1:15.1.0-1
+- Update to 15.1.0
+
 * Fri May 14 2021 Yatin Karel <ykarel@redhat.com> - 1:15.0.1-2
 - Apply Add-config-option-to-skip-tempest-tests.patch
 
