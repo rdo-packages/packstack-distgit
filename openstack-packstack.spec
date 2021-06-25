@@ -1,4 +1,3 @@
-%global milestone .0rc2
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
@@ -12,7 +11,7 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        17.0.0
-Release:        0.3%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
@@ -25,11 +24,6 @@ Source101:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_
 Source102:        https://releases.openstack.org/_static/%{sources_gpg_sign}.txt
 %endif
 
-%if ! 0%{?dlrn}
-Patch0001: 0001-Add-config-option-to-skip-tempest-tests.patch
-%endif
-#
-# patches_base=17.0.0.0rc2
 #
 
 BuildArch:      noarch
@@ -208,6 +202,9 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %endif
 
 %changelog
+* Fri Jun 25 2021 Alfredo Moralejo <amoralej@redhat.com> 1:17.0.0-1
+- Update to 17.0.0
+
 * Mon Mar 29 2021 Yatin Karel <ykarel@redhat.com> - 1:17.0.0-0.3.0rc2
 - Actually apply Add-config-option-to-skip-tempest-tests.patch
 
