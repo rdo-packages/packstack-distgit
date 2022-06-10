@@ -83,10 +83,8 @@ Requires: puppet-openstacklib
 Requires: puppet-oslo
 Requires: puppet-ovn
 Requires: puppet-placement
-Requires: puppet-sahara
 Requires: puppet-swift
 Requires: puppet-tempest
-Requires: puppet-trove
 Requires: puppet-vswitch
 Requires: puppet-apache
 Requires: puppet-certmonger
@@ -108,6 +106,8 @@ Requires: puppet-xinetd
 
 %if 0%{rhosp} == 0
 Requires: puppet-magnum
+Requires: puppet-sahara
+Requires: puppet-trove
 %endif
 
 %description puppet
