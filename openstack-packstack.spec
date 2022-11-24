@@ -87,7 +87,6 @@ Requires: puppet-swift
 Requires: puppet-tempest
 Requires: puppet-vswitch
 Requires: puppet-apache
-Requires: puppet-certmonger
 Requires: puppet-concat
 Requires: puppet-firewall
 Requires: puppet-inifile
