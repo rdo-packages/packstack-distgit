@@ -1,4 +1,3 @@
-%global milestone .0rc1
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 %global sources_gpg_sign 0xa7475c5f2122fec3f90343223fe3bf5aad1080e4
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
@@ -12,15 +11,13 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        21.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_version}.tar.gz
-#
-# patches_base=21.0.0.0rc1
 #
 
 # Required for tarball sources verification
@@ -205,6 +202,9 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %endif
 
 %changelog
+* Tue Nov 29 2022 RDO <dev@lists.rdoproject.org> 1:21.0.0-1
+- Update to 21.0.0
+
 * Thu Oct 20 2022 RDO <dev@lists.rdoproject.org> 1:21.0.0-0.1.0rc1
 - Update to 21.0.0.0rc1
 
