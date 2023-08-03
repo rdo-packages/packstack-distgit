@@ -2,6 +2,12 @@
 %global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+# we are excluding some BRs from automatic generator
+%global excluded_brs doc8 bandit pre-commit hacking flake8-import-order bashate
+# Exclude sphinx from BRs if docs are disabled
+%if ! 0%{?with_doc}
+%global excluded_brs %{excluded_brs} sphinx openstackdocstheme
+%endif
 
 # Guard for rhosp for packages not supported in OSP
 %global rhosp 0
@@ -33,23 +39,11 @@ BuildRequires:  openstack-macros
 %endif
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  git-core
 
 Requires:       openssh-clients
-Requires:       python3-distro
-Requires:       python3-netaddr
 Requires:       openstack-packstack-puppet == %{epoch}:%{version}-%{release}
-Obsoletes:      packstack-modules-puppet
-Requires:       python3-pyOpenSSL >= 16.2.0
-Requires:       python3-pbr
-Requires:       python3-setuptools
-Requires:       /usr/bin/yum
-
-Requires:       python3-netifaces
-Requires:       python3-PyYAML
-Requires:       python3-docutils
 
 %description
 Packstack is a utility that uses Puppet modules to install OpenStack. Packstack
@@ -119,12 +113,6 @@ Puppet module used by Packstack to install OpenStack
 %package doc
 Summary:          Documentation for Packstack
 Group:            Documentation
-BuildRequires:    python3-sphinx
-BuildRequires:    python3-netaddr
-BuildRequires:    python3-pyOpenSSL
-
-BuildRequires:    python3-netifaces
-BuildRequires:    python3-PyYAML
 
 %description doc
 This package contains documentation files for Packstack.
@@ -149,15 +137,37 @@ find packstack/puppet/modules \( -name spec -o -name ext \) | xargs rm -rf
 rm -rf %{_builddir}/puppet
 mv packstack/puppet %{_builddir}/puppet
 
+sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
+sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i /^minversion.*/d tox.ini
+sed -i /^requires.*virtualenv.*/d tox.ini
+
+# Exclude some bad-known BRs
+for pkg in %{excluded_brs}; do
+  for reqfile in doc/requirements.txt test-requirements.txt; do
+    if [ -f $reqfile ]; then
+      sed -i /^${pkg}.*/d $reqfile
+    fi
+  done
+done
+
+# Automatic BR generation
+%generate_buildrequires
+%if 0%{?with_doc}
+  %pyproject_buildrequires -t -e %{default_toxenv},docs
+%else
+  %pyproject_buildrequires -t -e %{default_toxenv}
+%endif
+
 %build
-%{py3_build}
+%pyproject_wheel
 
 %if 0%{?with_doc}
 %{__python3} setup.py build_sphinx -b man
 %endif
 
 %install
-%{py3_install}
+%pyproject_install
 
 # Delete tests
 rm -fr %{buildroot}%{python3_sitelib}/tests
@@ -187,7 +197,7 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %{_bindir}/packstack
 %{_datadir}/packstack
 %{python3_sitelib}/packstack
-%{python3_sitelib}/packstack-*.egg-info
+%{python3_sitelib}/packstack-*.dist-info
 
 %files puppet
 %defattr(644,root,root,755)
