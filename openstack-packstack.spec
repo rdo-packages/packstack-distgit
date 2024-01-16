@@ -10,7 +10,7 @@
 
 Name:           openstack-packstack
 Epoch:          1
-Version:        20.0.0
+Version:        20.0.1
 Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
@@ -202,6 +202,9 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %endif
 
 %changelog
+* Tue Jan 16 2024 RDO <dev@lists.rdoproject.org> 1:20.0.1-1
+- Update to 20.0.1
+
 * Mon Apr 11 2022 RDO <dev@lists.rdoproject.org> 1:20.0.0-1
 - Update to 20.0.0
 
