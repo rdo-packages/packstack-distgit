@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x4c29ff0e437f3351fd82bdf47c5a3bc787dc7035
+%global sources_gpg_sign 0x2ef3fe0ec2b075ab7458b5f8b702b20b13df2318
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -10,7 +10,7 @@
 
 Name:           openstack-packstack
 Epoch:          1
-Version:        18.0.0
+Version:        18.0.1
 Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
@@ -203,6 +203,9 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %endif
 
 %changelog
+* Tue Jan 16 2024 RDO <dev@lists.rdoproject.org> 1:18.0.1-1
+- Update to 18.0.1
+
 * Fri Jun 25 2021 Alfredo Moralejo <amoralej@redhat.com> 1:18.0.0-1
 - Update to 18.0.0
 
