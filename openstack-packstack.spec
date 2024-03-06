@@ -99,7 +99,6 @@ Requires: puppet-xinetd
 
 %if 0%{rhosp} == 0
 Requires: puppet-magnum
-Requires: puppet-sahara
 Requires: puppet-trove
 %endif
 
