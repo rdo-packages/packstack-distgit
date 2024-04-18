@@ -1,5 +1,6 @@
+%global milestone .0rc1
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0xf8675126e2411e7748dd46662fc2093e4682645f
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 # we are excluding some BRs from automatic generator
@@ -16,14 +17,18 @@
 
 Name:           openstack-packstack
 Epoch:          1
-Version:        XXX
-Release:        XXX
+Version:        24.0.0
+Release:        0.1%{?milestone}%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_version}.tar.gz
+#
+# patches_base=24.0.0.0rc1
+#
+
 # Required for tarball sources verification
 %if 0%{?sources_gpg} == 1
 Source101:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_version}.tar.gz.asc
@@ -208,4 +213,7 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %endif
 
 %changelog
+* Thu Apr 18 2024 RDO <dev@lists.rdoproject.org> 1:24.0.0-0.1.0rc1
+- Update to 24.0.0.0rc1
+
 
