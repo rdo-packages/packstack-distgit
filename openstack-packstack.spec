@@ -1,6 +1,5 @@
-%global milestone .0rc1
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2ef3fe0ec2b075ab7458b5f8b702b20b13df2318
+%global sources_gpg_sign 0xf8675126e2411e7748dd46662fc2093e4682645f
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 # we are excluding some BRs from automatic generator
@@ -18,15 +17,13 @@
 Name:           openstack-packstack
 Epoch:          1
 Version:        23.0.0
-Release:        0.1%{?milestone}%{?dist}
+Release:        1%{?dist}
 Summary:        Openstack Install Utility
 
 Group:          Applications/System
 License:        ASL 2.0 and GPLv2
 URL:            https://github.com/openstack/packstack
 Source0:        https://tarballs.opendev.org/x/packstack/packstack-%{upstream_version}.tar.gz
-#
-# patches_base=23.0.0.0rc1
 #
 
 # Required for tarball sources verification
@@ -214,6 +211,9 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %endif
 
 %changelog
+* Wed Aug 21 2024 Alfredo Moralejo <amoralej@redhat.com> 1:23.0.0-1
+- Update to 23.0.0.0
+
 * Tue Oct 17 2023 RDO <dev@lists.rdoproject.org> 1:23.0.0-0.1.0rc1
 - Update to 23.0.0.0rc1
 
