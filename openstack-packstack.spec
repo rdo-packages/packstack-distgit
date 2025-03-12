@@ -209,3 +209,4 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 
 %changelog
 
+# REMOVEME: error caused by commit https://opendev.org/openstack/packstack/commit/bff82b204be3fa23f82b39798ae6a20945b34ad1
