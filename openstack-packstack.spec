@@ -162,7 +162,8 @@ done
 %pyproject_wheel
 
 %if 0%{?with_doc}
-%{__python3} setup.py build_sphinx -b man
+export PYTHONPATH="$( pwd ):$PYTHONPATH"
+sphinx-build -a -E -d docs/build/doctrees -b man docs docs/build/man
 %endif
 
 %install
