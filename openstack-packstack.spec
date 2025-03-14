@@ -162,7 +162,7 @@ done
 %pyproject_wheel
 
 %if 0%{?with_doc}
-%{__python3} setup.py build_sphinx -b man
+%tox -e docs
 %endif
 
 %install
