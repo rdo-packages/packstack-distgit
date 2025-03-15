@@ -178,7 +178,7 @@ cp -r %{_builddir}/puppet/modules/packstack  %{buildroot}/%{_datadir}/openstack-
 
 # Move packstack documentation
 mkdir -p %{buildroot}/%{_datadir}/packstack
-install -p -D -m 644 docs/packstack.rst %{buildroot}/%{_datadir}/packstack
+install -p -D -m 644 docs/source/packstack.rst %{buildroot}/%{_datadir}/packstack
 
 # Move Puppet manifest templates back to original place
 mkdir -p %{buildroot}/%{python3_sitelib}/packstack/puppet
@@ -209,4 +209,3 @@ rm -fr %{buildroot}%{python3_sitelib}/docs
 %endif
 
 %changelog
-
