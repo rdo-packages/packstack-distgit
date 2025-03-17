@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f992ad1_8fe41fd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2025-03-17T07:38:15Z",
+      "side": 1,
+      "message": "Fixed with https://review.rdoproject.org/r/c/openstack/packstack-distgit/+/56808",
+      "revId": "cbd78ef2dee81a276e4c7a823e97be36d70e786f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ],
   "submitRequirementResults": []
 }
